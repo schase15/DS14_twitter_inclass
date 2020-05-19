@@ -12,12 +12,16 @@ from twitoff_app.routes.twitter_routes import twitter_routes
 # DATABASE_URI = "sqlite:///twitoff_app_99.db" # using relative filepath
 DATABASE_URI = "sqlite:////Users/stevenchase/Desktop/Steven/Computer_Science/Lambda/DS14_twitter_inclass/twitoff_development_14.db" # using absolute filepath on Mac (recommended)
 
+SECRET_KEY = "super secret" # todo: use env var to customize
+
 # Initialize our app
 def create_app():
     app = Flask(__name__)
+    app.config["SECRET_KEY"] = SECRET_KEY
 
 # Configure the database
     app.config["SQLALCHEMY_DATABASE_URI"] =DATABASE_URI
+    app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     db.init_app(app)
     migrate.init_app(app, db)
 
