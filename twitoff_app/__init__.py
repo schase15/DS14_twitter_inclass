@@ -12,7 +12,7 @@ from twitoff_app.routes.twitter_routes import twitter_routes
 # DATABASE_URI = "sqlite:///twitoff_app_99.db" # using relative filepath
 DATABASE_URI = "sqlite:////Users/stevenchase/Desktop/Steven/Computer_Science/Lambda/DS14_twitter_inclass/twitoff_development_14.db" # using absolute filepath on Mac (recommended)
 
-SECRET_KEY = "super secret" # todo: use env var to customize
+SECRET_KEY = "super secret" 
 
 # Initialize our app
 def create_app():
