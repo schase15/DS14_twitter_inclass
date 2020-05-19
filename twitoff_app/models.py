@@ -4,18 +4,20 @@
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
-# create Instances
+# create objects of SQLAlchemy and Migrate classes from flask
 db = SQLAlchemy()
 
 migrate = Migrate()
 
-
+# Create models - classes with attributes to store data
 class Book(db.Model):
     #__table_name__ = "books"
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(128))
     author_id = db.Column(db.String(128))
 
+# We will create instances of the User class and store information pulled from the twitter api
+# as the attributes. Need to create an attribute for each data piece we want to store
 class User(db.Model):
     id = db.Column(db.BigInteger, primary_key=True)
     screen_name = db.Column(db.String(128), nullable=False)
@@ -24,16 +26,20 @@ class User(db.Model):
     followers_count = db.Column(db.Integer)
     #latest_tweet_id = db.Column(db.BigInteger)
 
+# Set a user.id as a foreign key
+# Create an embedding attribute, we will need this when using the Basilica api
 class Tweet(db.Model):
     id = db.Column(db.BigInteger, primary_key=True)
     user_id = db.Column(db.BigInteger, db.ForeignKey("user.id"))
     full_text = db.Column(db.String(500))
     embedding = db.Column(db.PickleType)
 
+    # Creates a relationship between the User and their tweets. So that you can call tweets.user and get user info
+    # or call user.tweets to get tweet info
     user = db.relationship("User", backref=db.backref("tweets", lazy=True))
 
 
-
+# Converts our database records into json format so the website can read them
 def parse_records(database_records):
     """
     A helper method for converting a list of database record objects into a list of dictionaries, so they can be returned as JSON

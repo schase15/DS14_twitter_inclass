@@ -1,35 +1,38 @@
-# Interacting with basilica
+# Interacting with Basilica
 
 # Imports
 from basilica import Connection
 import os 
 from dotenv import load_dotenv
 
-# Load credentials from .env
+# Load Basilica credentials from .env file
 load_dotenv()
 
 BASILICA_API_KEY = os.getenv("BASILICA_API_KEY", default='OOPS')
 
-# Establish connection
+# Establish connection to Basilica
 connection = Connection(BASILICA_API_KEY)
 print(type(connection))
 
-# Simple embed to test
-embedding = connection.embed_sentance('HELLO WORLD!')
-print(embedding)
 
-# List of sentences to convert to numeric values
-sentences = [
-    "This is a sentence!",
-    "This is a similar sentence!",
-    "I don't think this sentence is very similar at all...",
-]
+if __name__ == "__main__":
+        
+    # Simple embed to test
+    embedding = connection.embed_sentence('HELLO WORLD!')
+    print(embedding)
 
-# Call Basilica to embed the sentences into numeric values
-embeddings = list(connection.embed_sentences(sentences))
+    # List of sentences to convert to numeric values
+    sentences = [
+        "This is a sentence!",
+        "This is a similar sentence!",
+        "I don't think this sentence is very similar at all...",
+    ]
 
-# Print the enbedded sentences above
-for embed in embeddings:
-    print('------')
-    print(embed)
+    # Call Basilica to embed the sentences into numeric values
+    embeddings = list(connection.embed_sentences(sentences))
+
+    # Print the enbedded sentences above
+    for embed in embeddings:
+        print('------')
+        print(embed)
 

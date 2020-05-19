@@ -1,6 +1,8 @@
 # Github ignore pages
+
+# Ignore database and migrations data used to populate database
 migrations/
 twitoff_development_14.db
 
-# ignore credentials
+# Ignore credentials
 .env

@@ -5,7 +5,7 @@ import tweepy
 import os
 from dotenv import load_dotenv
 
-# Load in credentials
+# Load in Twitter credentials
 load_dotenv()
 
 # Credentials - currently using professors, needs to update to my own
@@ -19,7 +19,7 @@ auth = tweepy.OAuthHandler(TWITTER_API_KEY, TWITTER_API_SECRET)
 auth.set_access_token(TWITTER_ACCESS_TOKEN, TWITTER_ACCESS_TOKEN_SECRET)
 print('AUTH', auth)
 
-# Set api
+# Set api to interact with
 api = tweepy.API(auth)
 print('API', api)
 

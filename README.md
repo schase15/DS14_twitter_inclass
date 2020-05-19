@@ -7,22 +7,23 @@ TODO: clone the repo
 ## Setup
 
 ```sh
-# Windows users can omit the "FLASK_APP=web_app" part...
 
-FLASK_APP=web_app flask db init #> generates app/migrations dir
+# Generates migrations directory
+FLASK_APP=web_app flask db init 
 
-# run both when changing the schema:
-FLASK_APP=web_app flask db migrate #> creates the db (with "alembic_version" table)
-FLASK_APP=web_app flask db upgrade #> creates the specified tables
+# Run both when changing the schema:
+# Creates the database
+FLASK_APP=web_app flask db migrate 
+
+# Creates the specific data
+FLASK_APP=web_app flask db upgrade
+
+# Running the web app will insert data into the tables
 ```
 
 ## Usage
 
 ```sh
-# mac version:
+# Run the app using Flask
 FLASK_APP=web_app flask run
-
-# windows version:
-set FLASK_APP=web_app
-flask run
 ```

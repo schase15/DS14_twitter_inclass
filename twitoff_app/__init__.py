@@ -1,4 +1,7 @@
 # Entry point into a directory
+# Tells the website to run the app
+# Define app, tell it the routes to use
+# all the supporting code is on other pages that this refers to
 
 # web_app/__init__.py
 
