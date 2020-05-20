@@ -3,13 +3,15 @@
 # Define app, tell it the routes to use
 # all the supporting code is on other pages that this refers to
 
-# web_app/__init__.py
+# twitoff_app/__init__.py
 
 from flask import Flask
 from twitoff_app.models import db, migrate
 from twitoff_app.routes.home_routes import home_routes
 from twitoff_app.routes.book_routes import book_routes
 from twitoff_app.routes.twitter_routes import twitter_routes
+from twitoff_app.routes.stats_routes import stats_routes
+
 
 
 # DATABASE_URI = "sqlite:///twitoff_app_99.db" # using relative filepath
@@ -32,6 +34,7 @@ def create_app():
     app.register_blueprint(home_routes)
     app.register_blueprint(book_routes)
     app.register_blueprint(twitter_routes)
+    app.register_blueprint(stats_routes)
 
     return app
 

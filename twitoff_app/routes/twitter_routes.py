@@ -22,8 +22,10 @@ def get_user(screen_name=None):
     # (using get_user method on twitter api)
     twitter_user = twitter_api.get_user(screen_name)
 
+    
     # Use the input screen name to get latest tweets (using user_timeline method on twitter_api)
-    statuses = twitter_api.user_timeline(screen_name, tweet_mode="extended", count=150, exclude_replies=True, include_rts=False)
+    #  exclude_replies=True, include_rts=False - exclude replies and retweets so we get all 150 tweets, same count for each user
+    statuses = twitter_api.user_timeline(screen_name, tweet_mode="extended", count=150)
     
     ## ADD USER TABLE INFORMATION TO DB
     # Get existing user from the db or initialize a new one if it doesn't exist yet:
