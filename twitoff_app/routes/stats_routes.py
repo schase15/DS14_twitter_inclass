@@ -61,11 +61,9 @@ def predict():
     # #result_a = classifier.predict([user_a_tweets[0].embedding])
     # #result_b = classifier.predict([user_b_tweets[0].embedding])
 
-    # use Basilica connection to 
+    # Use Basilica connection to embed input tweet, use Basilica model trained on twitter
     example_embedding = basilica_connection.embed_sentence(tweet_text, model="twitter")
     result = classifier.predict([example_embedding])
-
-    # #return jsonify({"message": "RESULTS", "most_likely": result[0]})
 
     # Direct user to prediction result page after running prediction
     return render_template("prediction_results.html",
