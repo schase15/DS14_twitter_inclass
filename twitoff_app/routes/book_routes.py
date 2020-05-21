@@ -2,6 +2,8 @@
 
 from flask import Blueprint, jsonify, request, render_template, flash, redirect
 from twitoff_app.models import db, Book
+
+# Create book route object on app
 book_routes = Blueprint("book_routes", __name__)
 
 # The data in jason format - computer friendly
