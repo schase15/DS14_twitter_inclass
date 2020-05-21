@@ -2,28 +2,36 @@
 
 
 {% extends "bootstrap_layout.html" %}
+{% set active_page = "prediction_form" %}
 
 {% block content %}
     <h2>Prediction Time</h2>
 
     <p>Use the form below to predict which user is more likely to say a given tweet...</p>
 
+    <p>If the Twitter user has never been used before, you will recieve an error. <br>
+        If this happens, please visit the create user link <a href="http://127.0.0.1:5000/users/new">here</a> to add the specific Twitter user to our working database. </p>
+
     <form action="/predict" method="POST">
 
-        <label>Twitter User A:</label>
-        <select name="screen_name_a">
+        <label>Twitter User A Screen Name:</label>
+        <!-- <select name="screen_name_a">
             <option value="elonmusk" selected="true">@elonmusk</option>
             <option value="justinbieber">@justinbieber</option>
             <option value="s2t2">@s2t2</option>
-        </select>
+        </select> -->
+
+        <input type="text" name="screen_name_a" placeholder="justinbieber" value="justinbieber">
         <br>
 
-        <label>Twitter User B:</label>
-        <select name="screen_name_b">
+        <label>Twitter User B Screen Name:</label>
+        <!-- <select name="screen_name_b">
             <option value="elonmusk">@elonmusk</option>
             <option value="justinbieber" selected="true">@justinbieber</option>
             <option value="s2t2">@s2t2</option>
-          </select>
+          </select> -->
+
+        <input type="text" name="screen_name_b" placeholder="elonmusk" value="elonmusk">
         <br>
 
         <label>Tweet Text:</label>
@@ -31,6 +39,7 @@
         <br>
 
         <button>Submit</button>
+
     </form>
 {% endblock %}
 

@@ -8,14 +8,14 @@ TODO: clone the repo
 
 ```sh
 
-# Generates migrations directory
+# Generates migrations directory - needed to create database
 FLASK_APP=web_app flask db init 
 
 # Run both when changing the schema:
 # Creates the database
 FLASK_APP=web_app flask db migrate 
 
-# Creates the specific data
+# Creates the specific data tables
 FLASK_APP=web_app flask db upgrade
 
 # Running the web app will insert data into the tables
