@@ -1,5 +1,9 @@
 # web_app/models.py
 
+# Models are used to create the data that is inserted into the tables in the database
+# Each Class becomes a table, each attribute on the class becomes a column header
+# Each instance of the class becomes a row - the app creates these and inserts them into the correct table in the database
+
 # Imports
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -10,14 +14,15 @@ db = SQLAlchemy()
 migrate = Migrate()
 
 # Create models - classes with attributes to store data
+# Define what type of data can be stored in the column
+# Set primary and any other keys
+
 class Book(db.Model):
     #__table_name__ = "books"
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(128))
     author_id = db.Column(db.String(128))
 
-# We will create instances of the User class and store information pulled from the twitter api
-# as the attributes. Need to create an attribute for each data piece we want to store
 class User(db.Model):
     id = db.Column(db.BigInteger, primary_key=True)
     screen_name = db.Column(db.String(128), nullable=False)
